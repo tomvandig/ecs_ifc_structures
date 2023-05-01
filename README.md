@@ -4,6 +4,32 @@
 
 
 ```
+
+
+commits group component adds/removes/edits
+entities are never explicitly added or removed
+
+entities are global, but components live in a hierarchy with paths seperated by /
+    paths mainly serve as data partitioning, and rights boundaries
+
+component types are explicitly added but never edited nor removed
+
+For unqueryable binary contents, the blob type is used. 
+    Blobs can be uploaded and downloaded as is but not inspected deeper by the ecs code.
+
+!!! A user should be able to download commits scoped to his rights in terms of types and paths, and still contribute to the repository
+Essentially, this means that commits don't have a strict "precedes" attribute 
+    and instead are valid if they don't violate constraints, inserted in the order determined by the server
+    
+Component (c2n98e23981022, ifc2x3::cartesianpoint, 1) (human readable id) 
+        <=> 
+(9382,15,1) (internal numeric id) <=> 000024A6-000F-0001  (fused hex 64 bit, flip order to increase locality of reference)
+
+maximum counts:
+    entities: 4 billion
+    types: 65k
+    components of same type per entity: 65k 
+
 Commit: Author:         bob@bob.com
         Message:        moved wall
         Date:           19/04/2023
