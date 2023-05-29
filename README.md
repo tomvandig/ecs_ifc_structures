@@ -78,6 +78,7 @@ Blob {
 
 User: Name: Bob
       Email: bob@bob.com
+      Token: 0r8932cn0r02938rc702938e9
       Rights: 
         Scopes: /project/files/*
         Types: ifc2x3::cartesianpoint
@@ -100,4 +101,67 @@ GET /ecs/<commit_id>/scope/<path>/components/<component_id> // get component by 
 GET /ecs/components/types                                   // get all component types
 GET /ecs/entities                                           // get all known entities
 
+ -- remotes
+POST /remote/read/<name>                        // create remote with <name>, include token and rights
+
+
+
+important considerations:
+ - shared ownership
+ - ifc5 can represent ifc2/4
+ - versioning
+ - local data
+ - exact schema not important
+ - extensible
+ - automation
+ - auditing 
+ - simplicity
+
+
+
+
+
+
+
+versioned storage
+
+query object X version Y
+
+data itself in giant ever-increasing list with offset "dataIndex", revision, and link to previous revision
+
+store tuples of:
+{
+    objectID: number
+    changedRevision: number
+    type: number
+    dataIndex: number
+}
+
+(12 bytes per tuple, 100mil objects = 1.2GB)
+
+on top of this, store tuples for last N commits (incrementally)
+
+querying top N level elements is super fast, older means slower
+
+
+
+objects can be interpreted if all their components and all of the referenced components of those components are available.
+component references can only flow downstream in the object hierarchy
+labels combined with component types are used to filter objects for querying and rights
+having rights to a component implies having rights to interpreting that component, meaning rights to all downstream components
+
+a "filter rule" is a tuple of [path, type, label],
+a "filter" is a list of filter rules,
+if something is not explicitly named in a filter it does not pass the filter,
+multiple rules in a filter work as OR,
+items within a filter rule work as AND,
+right management is done by giving each user a "rights filter".
+
+Example:
+[/ids/*, *, *]
+[/models/arc/*, *::furniture, *]
+[/models/arc/*, *, exterior]
+[/clashes/arc/*, *, clearance]
+
+paths are for organizing data hierarchy in the project, NOT for organizing the hierarchy within the model itself
 ```
