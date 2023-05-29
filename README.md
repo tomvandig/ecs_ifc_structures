@@ -61,6 +61,7 @@ ComponentType {
 Component {
     ID: (entity: 13, type: ifc2x3::cartesianpoint, number: 1)
     hash: 2cm8r2c2389c09m2349023,
+    labels: [clearance],
     deephash: 03298nc0293847cn092s,
     data: {
         x: 23,
