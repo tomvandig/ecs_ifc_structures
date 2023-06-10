@@ -67,8 +67,8 @@ onMounted(() => {
                 added: [],
                 updated: [
                     new Component(props.entityID!, "position", {
-                      x: pos.x,
-                      y: pos.y
+                      x: Math.floor(pos.x),
+                      y: Math.floor(pos.z)
                     })],
                 removed: []
             }
