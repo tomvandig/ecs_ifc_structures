@@ -15,16 +15,30 @@ function generateUUID() { // Public Domain/MIT
     });
 }
 
-export interface ID {
+export class ID {
     entity: number;
     type: string;
     number: number;
+
+    constructor(entity: number, type: string, number: number)
+    {
+        this.entity = entity;
+        this.type = type;
+        this.number = number;
+    }
 }
 
 export class Component {
     ID: ID;
     labels: string[];
     data: any;
+
+    constructor(entity: number, type: string, data: any)
+    {
+        this.ID = new ID(entity, type, 0);
+        this.labels = [];
+        this.data = data;
+    }
 }
 
 interface CommitPath

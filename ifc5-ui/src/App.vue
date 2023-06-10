@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { ARC_LEDGER, MEP_LEDGER } from './ledgers';
 </script>
 
 <template>
   <div class="block1">
-    <HelloWorld msg="type1" boxColor="green" />
+    <HelloWorld msg="arc" boxColor="green" :ledger="ARC_LEDGER" :entityID="0" />
   </div>
   <div class="block2">
-    <HelloWorld msg="type2" boxColor="cyan" />
+    <HelloWorld msg="mep" boxColor="cyan" :ledger="MEP_LEDGER" :entityID="1"/>
   </div>
 </template>
 

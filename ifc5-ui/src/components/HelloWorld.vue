@@ -2,10 +2,13 @@
 import * as THREE from "three";
 import { ref, onMounted } from 'vue'
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
+import { CommitProposal, Component, Ledger } from "@/ifc5";
 
 const props = defineProps({
   msg: String,
-  boxColor: String
+  boxColor: String,
+  ledger: Ledger,
+  entityID: Number
 })
 
 let name = props.msg;
@@ -37,7 +40,7 @@ onMounted(() => {
 				const mesh = new THREE.Mesh( geometry, material );
 
 
-        if (props.msg === "type1")
+        if (props.msg === "arc")
         {
           mesh.position.set(200, 0, 0);
         }
@@ -55,7 +58,22 @@ onMounted(() => {
       let control = new TransformControls( camera, renderer.domElement );
       control.addEventListener( 'mouseUp', ()=>{
         let pos = mesh.position;  
-        console.log(`${pos.x},${pos.z}`);
+        
+        let proposal = new CommitProposal();
+        proposal.message = `Moved object ${props.msg}`;
+        proposal.paths = [
+            {
+                path: props.msg!,
+                added: [],
+                updated: [
+                    new Component(props.entityID!, "position", {
+                      x: pos.x,
+                      y: pos.y
+                    })],
+                removed: []
+            }
+        ]
+        props.ledger!.CommitProposal(proposal);
       } );
       control.showY = false;
 				control.attach( mesh );
