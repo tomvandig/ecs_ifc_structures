@@ -19,6 +19,7 @@ import { ARC_LEDGER, MEP_LEDGER } from './ledgers';
         <Floorplan/>
       </div>
       <div class="block">
+        <Floorplan/>
       </div>
     </div>
   </div>

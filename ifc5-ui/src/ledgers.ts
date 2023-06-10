@@ -6,7 +6,6 @@ function commitLogger(name: string)
 {
     return (c: FilteredCommit) => {
         console.log(`${name} ${c.commit.initiator}::${c.commit.ID}::${c.commit.data.message}`);
-        console.log(c);
     }
 }
 

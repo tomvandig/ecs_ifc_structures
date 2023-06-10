@@ -6,6 +6,7 @@ import { ref, onMounted } from 'vue'
 let ctx: CanvasRenderingContext2D | false = false;
 let width = 0;
 let height = 0;
+let random = `${Math.random()}`;
 
 interface Pos {
     x: number,
@@ -72,7 +73,6 @@ function draw()
 FLOORPLAN_LEDGER.Listen("floorplan_view", new Rights().all(), (c: FilteredCommit) => {
     c.commit.data.paths.forEach((path) => {
         path.updated.forEach((comp) => {
-            console.log(comp);
             if (comp.ID.entity === 0)
             {
                 pos1 = comp.data;
@@ -89,7 +89,7 @@ FLOORPLAN_LEDGER.Listen("floorplan_view", new Rights().all(), (c: FilteredCommit
 
 onMounted(() => {
 
-    let canvas = document.getElementById("canvas");
+    let canvas = document.getElementById(`${random}`);
     
     //@ts-ignore
     ctx = canvas.getContext("2d");
@@ -110,7 +110,7 @@ onMounted(() => {
 
 <template>
   <div class="canvasdiv">
-    <canvas id="canvas"></canvas>
+    <canvas class="canvas" :id="random"></canvas>
   </div>
 </template>
 
@@ -120,7 +120,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
 }
-#canvas {
+.canvas {
     width: 100%;
     height: 100%;
 }
