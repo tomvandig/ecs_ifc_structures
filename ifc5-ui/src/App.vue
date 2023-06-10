@@ -1,97 +1,58 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Editor from './components/editor.vue'
+import Floorplan from './components/floorplan.vue'
 import { ARC_LEDGER, MEP_LEDGER } from './ledgers';
 </script>
 
 <template>
-  <div class="block1">
-    <HelloWorld msg="arc" boxColor="green" :ledger="ARC_LEDGER" :entityID="0" />
-  </div>
-  <div class="block2">
-    <HelloWorld msg="mep" boxColor="cyan" :ledger="MEP_LEDGER" :entityID="1"/>
+  <div class="container">
+    <div class="left_column">
+      <div class="block">
+        <Editor msg="arc" boxColor="green" :ledger="ARC_LEDGER" :entityID="0" />
+      </div>
+      <div class="block">
+        <Editor msg="mep" boxColor="cyan" :ledger="MEP_LEDGER" :entityID="1"/>
+      </div>
+    </div>
+    <div class="right_column">
+      <div class="block">
+        <Floorplan/>
+      </div>
+      <div class="block">
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 
-.html{
-  height: 100%;
-}
-
-.body {
-  height: 100%;
-}
-
-.block1
-{
-  width: 50%;
-  height: 50vh;
-}
-.block2
-{
-  width: 50%;
-  height: 50vh;
-}
-
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  height: 100%;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.left_column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 50%;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.right_column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 50%;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.block
+{
+  flex-grow: 1;
+  height: 50%;
+  border: 1px lightgray solid;
 }
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
