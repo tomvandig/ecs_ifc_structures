@@ -5,10 +5,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div class="block1">
-    <HelloWorld msg="asdf" />
+    <HelloWorld msg="type1" boxColor="green" />
   </div>
   <div class="block2">
-  <HelloWorld msg="asdf" />
+    <HelloWorld msg="type2" boxColor="cyan" />
   </div>
 </template>
 
@@ -24,13 +24,13 @@ import HelloWorld from './components/HelloWorld.vue'
 
 .block1
 {
-  width: 100%;
+  width: 50%;
   height: 50vh;
 }
 .block2
 {
-  width: 100%;
-  height: 50%;
+  width: 50%;
+  height: 50vh;
 }
 
 header {
