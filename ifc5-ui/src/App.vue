@@ -16,10 +16,10 @@ import { ARC_LEDGER, MEP_LEDGER } from './ledgers';
     </div>
     <div class="right_column">
       <div class="block">
-        <Floorplan/>
+        <Floorplan :entityID="0"/>
       </div>
       <div class="block">
-        <Floorplan/>
+        <Floorplan :entityID="1"/>
       </div>
     </div>
   </div>

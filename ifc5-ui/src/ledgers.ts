@@ -29,6 +29,8 @@ mep_ledger.Listen("listener_mep", new Rights().all(), commitLogger("[MEP] "));
 let floorplan_ledger = new Ledger("floorplan");
 floorplan_ledger.Mirror("*::*::*", main_ledger);
 
+main_ledger.Mirror(new Rights().all(), floorplan_ledger);
+
 
 export const ARC_LEDGER = arc_ledger;
 export const MEP_LEDGER = mep_ledger;
