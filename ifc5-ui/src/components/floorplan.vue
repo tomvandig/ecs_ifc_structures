@@ -156,7 +156,9 @@ onMounted(() => {
     //@ts-ignore
     ctx = canvas.getContext("2d");
     
+    //@ts-ignore
     canvas!.width = canvas!.getBoundingClientRect().width;
+    //@ts-ignore
     canvas!.height = canvas!.getBoundingClientRect().height;
 
     //@ts-ignore

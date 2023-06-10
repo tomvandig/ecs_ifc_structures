@@ -50,9 +50,9 @@ interface CommitPath
 }
 
 export class CommitProposal {
-    context: number[];
-    message: string;
-    paths: CommitPath[];
+    context: number[] = [];
+    message: string = "";
+    paths: CommitPath[] = [];
 }
 
 interface Commit {
@@ -126,6 +126,11 @@ function FilterCommitPath(inputCPath: CommitPath, outputCPath: CommitPath, filte
 export class FilteredCommit
 {
     commit: Commit;
+
+    constructor(c: Commit)
+    {
+        this.commit = c;
+    }
 }
 
 export class Rights
@@ -211,9 +216,9 @@ export class Rights
 
 class Listener
 {
-    ID: string;
-    rights: Rights;
-    cb: (c: FilteredCommit) => void;
+    ID: string = "";
+    rights: Rights = new Rights();
+    cb: (c: FilteredCommit) => void = () => {};
 }
 
 export class Ledger
@@ -236,6 +241,7 @@ export class Ledger
     CommitProposal(proposal: CommitProposal, id? : string, initiator?: string)
     {
         // this is a stupid check, solve in a different way in the future
+        //@ts-ignore
         if (id && this.IDs[id])
         {
             console.log(`Dupliate commit received ${initiator}::${id}`)
@@ -253,6 +259,7 @@ export class Ledger
             data: proposal
         } 
 
+        //@ts-ignore
         this.IDs[c.ID] = true;
         this.list.push(c);
         this.Notify(c);
