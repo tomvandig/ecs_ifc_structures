@@ -1,4 +1,4 @@
-import { CommitProposal, Component, Filter, FilteredCommit, Ledger, Rights } from "./ifc5";
+import { CommitProposal, Component, Filter, FilteredCommit, Ledger, Rights } from "./ifc5-ui/src/ifc5";
 
 // SETUP
 let main = new Ledger("main");
@@ -31,7 +31,6 @@ arc_mep.Listen("listener_mep", new Rights().all(), commitLogger("[MEP] "));
 // COMMIT
 {
     let proposal = new CommitProposal();
-    proposal.context = [];
     proposal.message = "new commit to arc";
     proposal.paths = [
         {
@@ -48,7 +47,6 @@ arc_mep.Listen("listener_mep", new Rights().all(), commitLogger("[MEP] "));
 
 {
     let proposal = new CommitProposal();
-    proposal.context = [];
     proposal.message = "new commit to mep";
     proposal.paths = [
         {
