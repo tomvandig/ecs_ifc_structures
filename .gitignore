@@ -1,2 +1,4 @@
 *.dtmp
 *.bkp
+/node_modules
+*.js

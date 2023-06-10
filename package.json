@@ -1,0 +1,22 @@
+{
+  "name": "ecs_ifc_structures",
+  "version": "1.0.0",
+  "description": "![pic.](drawio_ecs.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "esbuild ifc5-test.ts --bundle --outfile=bundle.js && node bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomvandig/ecs_ifc_structures.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomvandig/ecs_ifc_structures/issues"
+  },
+  "homepage": "https://github.com/tomvandig/ecs_ifc_structures#readme",
+  "dependencies": {
+    "esbuild": "^0.18.0"
+  }
+}
